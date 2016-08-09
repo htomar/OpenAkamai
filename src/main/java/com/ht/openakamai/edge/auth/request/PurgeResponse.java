@@ -9,6 +9,8 @@ public class PurgeResponse {
 	private String estimatedSeconds;
 	private String purgeId;
 	private String supportId;
+	private String progressUri;
+	private String pingAfterSeconds;
 
 	/**
 	 * @return the httpStatus
@@ -95,5 +97,35 @@ public class PurgeResponse {
 		return "PurgeResponse [httpStatus=" + httpStatus + ", detail=" + detail
 				+ ", estimatedSeconds=" + estimatedSeconds + ", purgeId="
 				+ purgeId + ", supportId=" + supportId + "]";
+	}
+
+	/**
+	 * @return the progressUri
+	 */
+	public String getProgressUri() {
+		return progressUri;
+	}
+
+	/**
+	 * @param progressUri
+	 *            the progressUri to set
+	 */
+	public void setProgressUri(String progressUri) {
+		this.progressUri = progressUri;
+	}
+
+	/**
+	 * @return the pingAfterSeconds
+	 */
+	public String getPingAfterSeconds() {
+		return pingAfterSeconds;
+	}
+
+	/**
+	 * @param pingAfterSeconds
+	 *            the pingAfterSeconds to set
+	 */
+	public void setPingAfterSeconds(String pingAfterSeconds) {
+		this.pingAfterSeconds = pingAfterSeconds;
 	}
 }

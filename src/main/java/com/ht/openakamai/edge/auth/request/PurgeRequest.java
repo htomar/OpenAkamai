@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PurgeRequest {
+	private String type;
 	private String hostname;
 	private List<String> objects;
 
@@ -37,5 +38,20 @@ public class PurgeRequest {
 	 */
 	public void setObjects(List<String> objects) {
 		this.objects = objects;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type
+	 *            the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}
 }

@@ -17,10 +17,9 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ht.akamai.headers.CustomHeaders;
 import com.ht.openakamai.edge.auth.credentials.ClientCredential;
 import com.ht.openakamai.edge.auth.exception.RequestSigningException;
 import com.ht.openakamai.edge.auth.request.PurgeRequest;
@@ -321,16 +320,5 @@ public class EdgeGridV1Signer implements RequestSigner {
 
 		format.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return format.format(date);
-	}
-
-	public static class CustomHeaders extends HttpHeaders {
-		private static final long serialVersionUID = 4469426168939318611L;
-
-		public CustomHeaders(final String authHeaders) {
-			super();
-			set("Authorization", authHeaders);
-			setContentType(MediaType.APPLICATION_JSON);
-			// setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		}
 	}
 }
