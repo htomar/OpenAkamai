@@ -1,4 +1,4 @@
-package com.ht.openakamai.edge.auth.exception;
+package org.htomar.openakamai.edge.auth.exception;
 
 /**
  * Exception representing errors during request signing.

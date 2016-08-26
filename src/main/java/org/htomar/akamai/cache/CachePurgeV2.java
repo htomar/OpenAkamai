@@ -1,5 +1,10 @@
-package com.ht.akamai.cache;
+package org.htomar.akamai.cache;
 
+import org.htomar.akamai.cache.auth.BasicAuth;
+import org.htomar.akamai.headers.CustomHeaders;
+import org.htomar.openakamai.edge.auth.exception.RequestSigningException;
+import org.htomar.openakamai.edge.auth.request.PurgeRequest;
+import org.htomar.openakamai.edge.auth.request.PurgeResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -7,12 +12,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-
-import com.ht.akamai.cache.auth.BasicAuth;
-import com.ht.akamai.headers.CustomHeaders;
-import com.ht.openakamai.edge.auth.exception.RequestSigningException;
-import com.ht.openakamai.edge.auth.request.PurgeRequest;
-import com.ht.openakamai.edge.auth.request.PurgeResponse;
 
 public class CachePurgeV2 {
 	/**
@@ -26,6 +25,7 @@ public class CachePurgeV2 {
 			final BasicAuth basicAuth)
 			throws RestClientException, RequestSigningException {
 		RestTemplate restTemplate = new RestTemplate();
+		LOGGER.debug(purgeRequest.toString());
 		ResponseEntity<PurgeResponse> responseEntity = restTemplate.exchange(
 				DEFAULT_INVALIDATE_ENDPOINT, HttpMethod.POST,
 				new HttpEntity<>(purgeRequest, new CustomHeaders(basicAuth)),

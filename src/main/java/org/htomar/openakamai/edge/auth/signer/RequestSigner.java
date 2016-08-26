@@ -1,10 +1,9 @@
-package com.ht.openakamai.edge.auth.signer;
+package org.htomar.openakamai.edge.auth.signer;
 
+import org.htomar.openakamai.edge.auth.credentials.ClientCredential;
+import org.htomar.openakamai.edge.auth.exception.RequestSigningException;
+import org.htomar.openakamai.edge.auth.request.PurgeRequest;
 import org.springframework.http.HttpHeaders;
-
-import com.ht.openakamai.edge.auth.credentials.ClientCredential;
-import com.ht.openakamai.edge.auth.exception.RequestSigningException;
-import com.ht.openakamai.edge.auth.request.PurgeRequest;
 
 /**
  * Interface describing a request signer that signs service requests.

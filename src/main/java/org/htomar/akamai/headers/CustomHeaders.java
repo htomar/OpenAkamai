@@ -1,12 +1,11 @@
-package com.ht.akamai.headers;
+package org.htomar.akamai.headers;
 
 import java.util.Arrays;
 
 import org.apache.commons.codec.binary.Base64;
+import org.htomar.akamai.cache.auth.BasicAuth;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-
-import com.ht.akamai.cache.auth.BasicAuth;
 
 public class CustomHeaders extends HttpHeaders {
 	private static final long serialVersionUID = 4469426168939318611L;

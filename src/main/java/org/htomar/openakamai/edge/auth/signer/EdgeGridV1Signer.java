@@ -1,4 +1,4 @@
-package com.ht.openakamai.edge.auth.signer;
+package org.htomar.openakamai.edge.auth.signer;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -15,14 +15,14 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
+import org.htomar.akamai.headers.CustomHeaders;
+import org.htomar.openakamai.edge.auth.credentials.ClientCredential;
+import org.htomar.openakamai.edge.auth.exception.RequestSigningException;
+import org.htomar.openakamai.edge.auth.request.PurgeRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ht.akamai.headers.CustomHeaders;
-import com.ht.openakamai.edge.auth.credentials.ClientCredential;
-import com.ht.openakamai.edge.auth.exception.RequestSigningException;
-import com.ht.openakamai.edge.auth.request.PurgeRequest;
 
 /**
  * Class representing the EdgeGrid version 1 signer that implements the

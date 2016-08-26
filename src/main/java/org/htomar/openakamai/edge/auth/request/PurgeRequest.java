@@ -1,4 +1,4 @@
-package com.ht.openakamai.edge.auth.request;
+package org.htomar.openakamai.edge.auth.request;
 
 import java.util.List;
 
@@ -53,5 +53,16 @@ public class PurgeRequest {
 	 */
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PurgeRequest [type=" + type + ", hostname=" + hostname
+				+ ", objects=" + objects + "]";
 	}
 }

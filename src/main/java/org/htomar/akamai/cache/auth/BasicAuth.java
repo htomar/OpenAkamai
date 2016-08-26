@@ -1,4 +1,4 @@
-package com.ht.akamai.cache.auth;
+package org.htomar.akamai.cache.auth;
 
 public class BasicAuth {
 	private String username;

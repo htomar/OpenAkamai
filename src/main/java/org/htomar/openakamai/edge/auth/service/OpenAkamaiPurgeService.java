@@ -1,7 +1,12 @@
-package com.ht.openakamai.edge.auth.service;
+package org.htomar.openakamai.edge.auth.service;
 
 import java.util.stream.Collectors;
 
+import org.htomar.openakamai.edge.auth.credentials.ClientCredential;
+import org.htomar.openakamai.edge.auth.exception.RequestSigningException;
+import org.htomar.openakamai.edge.auth.request.PurgeRequest;
+import org.htomar.openakamai.edge.auth.request.PurgeResponse;
+import org.htomar.openakamai.edge.auth.signer.EdgeGridV1Signer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -11,12 +16,6 @@ import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-
-import com.ht.openakamai.edge.auth.credentials.ClientCredential;
-import com.ht.openakamai.edge.auth.exception.RequestSigningException;
-import com.ht.openakamai.edge.auth.request.PurgeRequest;
-import com.ht.openakamai.edge.auth.request.PurgeResponse;
-import com.ht.openakamai.edge.auth.signer.EdgeGridV1Signer;
 
 public class OpenAkamaiPurgeService {
 	/**

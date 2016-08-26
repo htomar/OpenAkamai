@@ -1,4 +1,4 @@
-package com.ht.openakamai.edge.auth.request;
+package org.htomar.openakamai.edge.auth.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -96,7 +96,8 @@ public class PurgeResponse {
 	public String toString() {
 		return "PurgeResponse [httpStatus=" + httpStatus + ", detail=" + detail
 				+ ", estimatedSeconds=" + estimatedSeconds + ", purgeId="
-				+ purgeId + ", supportId=" + supportId + "]";
+				+ purgeId + ", supportId=" + supportId + ", progressUri="
+				+ progressUri + ", pingAfterSeconds=" + pingAfterSeconds + "]";
 	}
 
 	/**

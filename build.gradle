@@ -1,3 +1,6 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7"
+}
 
 apply plugin: 'java'
 
@@ -9,7 +12,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 jar {
-	baseName = 'OpenAkamai'
+	baseName = 'akamai-api'
 	version = '1.0.0'
 }
 
@@ -21,4 +24,21 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.1'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.1'
     testCompile 'junit:junit:4.12'
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    configurations = ['archives']
+	pkg {
+		repo = 'htomar'
+		name = 'akamai-api'
+		userOrg = user
+		licenses = ['MIT']
+		vcsUrl = 'https://github.com/htomar/OpenAkamai.git'
+		version {
+			name = '1.0.0'
+			desc = 'Akamai API for Spring'
+		}	
+	}
 }

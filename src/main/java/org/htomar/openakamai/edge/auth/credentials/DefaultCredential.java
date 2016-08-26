@@ -1,4 +1,4 @@
-package com.ht.openakamai.edge.auth.credentials;
+package org.htomar.openakamai.edge.auth.credentials;
 
 import org.springframework.util.Assert;
 
