@@ -3,6 +3,7 @@ plugins {
 }
 
 apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 repositories {
     jcenter()
@@ -29,6 +30,7 @@ dependencies {
 bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
+    publications = ['MyPublication'] 
     configurations = ['archives']
 	pkg {
 		repo = 'htomar'
@@ -41,4 +43,15 @@ bintray {
 			desc = 'Akamai API for Spring'
 		}	
 	}
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId 'com.github.htomar'
+            artifactId 'akamai-api'
+            version '1.0.0'
+        }
+    }
 }
