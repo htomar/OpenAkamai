@@ -14,7 +14,6 @@ public class CustomHeaders extends HttpHeaders {
 		super();
 		set("Authorization", authHeaders);
 		setContentType(MediaType.APPLICATION_JSON);
-		// setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 	}
 
 	public CustomHeaders(final BasicAuth basicAuth) {

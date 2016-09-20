@@ -39,7 +39,7 @@ public class OpenAkamaiPurgeService {
 						signer.sign(credential, hostName,
 								DEFAULT_INVALIDATE_ENDPOINT, purgeRequest)),
 				PurgeResponse.class);
-		LOGGER.info(responseEntity.getBody().toString());
+		LOGGER.debug(responseEntity.getBody().toString());
 		return responseEntity.getBody();
 	}
 
@@ -51,12 +51,10 @@ public class OpenAkamaiPurgeService {
 	}
 
 	private void preProcessPurgeRequest(final PurgeRequest purgeRequest) {
-		Assert.hasText(purgeRequest.getHostname());
 		Assert.notEmpty(purgeRequest.getObjects());
-		purgeRequest.setHostname(purgeRequest.getHostname().toLowerCase());
 		purgeRequest.setObjects(purgeRequest.getObjects().stream()
 				.filter(url -> StringUtils.hasText(url))
-				.map(url -> url.startsWith("/")
+				.map(url -> url.startsWith("/") || url.startsWith("http")
 						? url.toLowerCase()
 						: "/" + url.toLowerCase())
 				.collect(Collectors.toList()));
