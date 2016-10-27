@@ -160,13 +160,13 @@ public class EdgeGridV1Signer implements RequestSigner {
 		signData.append(authData);
 		String stringToSign = signData.toString();
 
-		LOGGER.info(String.format("String to sign : '%s'", stringToSign));
+		LOGGER.trace(String.format("String to sign : '%s'", stringToSign));
 
 		byte[] signatureBytes = sign(stringToSign,
 				signingKey.getBytes(UTF8_CHARSET), HMAC_ALG);
 		String signature = Base64.encodeBase64String(signatureBytes);
 
-		LOGGER.info(String.format("Signature : '%s'", signature));
+		LOGGER.trace(String.format("Signature : '%s'", signature));
 
 		// add the signature
 		sb.append(AUTH_SIGNATURE_NAME);
@@ -174,7 +174,7 @@ public class EdgeGridV1Signer implements RequestSigner {
 		sb.append(signature);
 
 		signedHeaders = new CustomHeaders(sb.toString());
-		LOGGER.info("Final Headers: " + sb.toString());
+		LOGGER.trace("Final Headers: " + sb.toString());
 		return signedHeaders;
 	}
 
@@ -259,7 +259,7 @@ public class EdgeGridV1Signer implements RequestSigner {
 			StringWriter stringWriter = new StringWriter();
 			mapper.writeValue(stringWriter, purgeRequest);
 			String content = stringWriter.toString();
-			LOGGER.info("Content String: " + content);
+			LOGGER.trace("Content String: " + content);
 			if (content != null) {
 				byte[] contentBytes = content.getBytes(UTF8_CHARSET);
 
@@ -271,10 +271,8 @@ public class EdgeGridV1Signer implements RequestSigner {
 							lengthToHash, maxBodySize, maxBodySize));
 					lengthToHash = maxBodySize;
 				} else {
-					if (LOGGER.isDebugEnabled()) {
-						LOGGER.debug(String.format("Content: %s",
-								Base64.encodeBase64String(contentBytes)));
-					}
+					LOGGER.trace(String.format("Content: %s",
+							Base64.encodeBase64String(contentBytes)));
 				}
 				byte[] digestBytes = getHash(contentBytes, 0, lengthToHash);
 				contentHash = Base64.encodeBase64String(digestBytes);

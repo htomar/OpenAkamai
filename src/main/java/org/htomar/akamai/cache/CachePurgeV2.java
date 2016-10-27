@@ -2,7 +2,6 @@ package org.htomar.akamai.cache;
 
 import org.htomar.akamai.cache.auth.BasicAuth;
 import org.htomar.akamai.headers.CustomHeaders;
-import org.htomar.openakamai.edge.auth.exception.RequestSigningException;
 import org.htomar.openakamai.edge.auth.request.PurgeRequest;
 import org.htomar.openakamai.edge.auth.request.PurgeResponse;
 import org.slf4j.Logger;
@@ -22,10 +21,22 @@ public class CachePurgeV2 {
 	public static final String DEFAULT_INVALIDATE_ENDPOINT = "https://api.ccu.akamai.com/ccu/v2/queues/default";
 
 	public PurgeResponse purgeByURL(final PurgeRequest purgeRequest,
-			final BasicAuth basicAuth)
-			throws RestClientException, RequestSigningException {
+			final BasicAuth basicAuth) throws RestClientException {
 		RestTemplate restTemplate = new RestTemplate();
 		LOGGER.debug(purgeRequest.toString());
+		ResponseEntity<PurgeResponse> responseEntity = restTemplate.exchange(
+				DEFAULT_INVALIDATE_ENDPOINT, HttpMethod.POST,
+				new HttpEntity<>(purgeRequest, new CustomHeaders(basicAuth)),
+				PurgeResponse.class);
+		LOGGER.info(responseEntity.getBody().toString());
+		return responseEntity.getBody();
+	}
+
+	public PurgeResponse purgeByCPCode(final PurgeRequest purgeRequest,
+			final BasicAuth basicAuth) throws RestClientException {
+		RestTemplate restTemplate = new RestTemplate();
+		LOGGER.debug(purgeRequest.toString());
+		purgeRequest.setType("cpcode");
 		ResponseEntity<PurgeResponse> responseEntity = restTemplate.exchange(
 				DEFAULT_INVALIDATE_ENDPOINT, HttpMethod.POST,
 				new HttpEntity<>(purgeRequest, new CustomHeaders(basicAuth)),
